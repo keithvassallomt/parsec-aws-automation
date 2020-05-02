@@ -67,7 +67,7 @@ We'll begin by following the Parsec AWS guide.
 
 14. Move on to **Next: Configure Security Group**. Leave the default option to create a new security group, and give it an easy-to-remember name, such as **Your_Instance_Name_Here-Sg**.
 
-![Create security group](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/securitygroup.png)
+![Create security group](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/SecurityGroup.png)
 
 15. Now click **Review and Launch** and click **Launch**. You'll be asked to create a key pair. Click **Create a new key pair** and give the key a name. 
 
