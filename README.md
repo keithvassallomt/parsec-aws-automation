@@ -7,6 +7,8 @@ Parsec AWS Automation Scripts & Guide
 | Acknowledgements      | [/u/rom-ok](https://www.reddit.com/user/rom-ok)<br>[/u/dolanders](https://www.reddit.com/user/dolanders)<br>The [Parsec Team](https://parsecgaming.com/)      |
 | Related Reading      | [Parsec AWS Guide](https://blog.parsecgaming.com/rtx-cloud-gaming-with-the-new-aws-g4-instances-11d1c60c2d09) |
 
+Check out a video version of this guide at: https://www.youtube.com/watch?v=FjYmR7KgId0
+
 ## Table of Contents
 
 **[Aims](#aims)**<br>
