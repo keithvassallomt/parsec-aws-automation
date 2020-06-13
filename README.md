@@ -202,6 +202,8 @@ GAMING_INSTANCE_SIZE_GB = 512  # Replace this with the size of your disk
 
 10. Now click **Configure details**. Give your rule a name, and click **Create rule**.
 
+11. At this point, shutdown your gaming rig, then from the EC2 console choose **Actions > Terminate**. This will terminate the instance and the Lamda function should kick in, which will create the initial snapshot of the machine. You can monitor it from the **Snapshots** section of the EC2 console. Note that this initial snapshot will take a while to complete, but following this snapshots shouldn't take that long - it depends on how many changes you've made to the machine whilst using it. 
+
 ## Creating the Start Script
 
 This section is also optional. Here we create a script that will automatically launch a gaming instance using spot pricing for us, without having to login to the AWS Console. 
