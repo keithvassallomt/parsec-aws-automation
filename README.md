@@ -4,7 +4,7 @@ Parsec AWS Automation Scripts & Guide
 | Info        | Value           |
 | ------------- |:-------------|
 | Created by      | Keith Vassallo |
-| Acknowledgements      | [/u/rom-ok](https://www.reddit.com/user/rom-ok)<br>[/u/dolanders](https://www.reddit.com/user/dolanders)<br>The [Parsec Team](https://parsecgaming.com/)      |
+| Acknowledgements      | [/u/rom-ok](https://www.reddit.com/user/rom-ok)<br>[/u/dolanders](https://www.reddit.com/user/dolanders)<br>[@Cookie-Monster-Coder](https://github.com/Cookie-Monster-Coder)<br>[@rhigueras](https://github.com/rhigueras)<br>The [Parsec Team](https://parsecgaming.com/)      |
 | Related Reading      | [Parsec AWS Guide](https://blog.parsecgaming.com/rtx-cloud-gaming-with-the-new-aws-g4-instances-11d1c60c2d09) |
 
 Check out a video version of this guide at: https://www.youtube.com/watch?v=H3vP6hD3fRo
@@ -45,7 +45,7 @@ We'll begin by following the Parsec AWS guide.
 
 ![Region selection](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/region.png)
 
-8. Click **Launch Instance**. You will want to select either **Windows Server 2016 Base** or **Windows Server 2019 Base**. I chose the 2016 option, but 2019 should also work fine.
+8. Click **Launch Instance**. You will want to select either **Windows Server 2016 Base** or **Windows Server 2019 Base**. I chose the 2016 option, in this guide, but used 2019 in following instances since it supports more modern games - so best to choose **Windows Server 2019 Base**.
 
 ![2016 Base](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/2016Base.png)
 
@@ -79,7 +79,7 @@ We'll begin by following the Parsec AWS guide.
 
 ![Instance started](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/instance_started.png)
 
-18. Now we'll connect to the instance. With your instance selected, click **Connect**, then click **Download Remote Desktop File** and add it to **That Folder**. Next, click **Get Password**. If you get a warning about the password not being available yet, click **Try again** until it is. Browse to the location of your key file (it should be in **That Folder**). This will display the key contents in the window.
+18. Now we'll connect to the instance. With your instance selected, click **Connect**, then switch to the **RDP client** tab, click **Download Remote Desktop File** and add it to **That Folder**. Next, click **Get Password**. If you get a warning about the password not being available yet, click **Try again** until it is. Browse to the location of your key file (it should be in **That Folder**). This will display the key contents in the window.
 
 ![Decrypted password](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/decrypted.png)
 
@@ -105,11 +105,11 @@ We'll now install Parsec via their awesome script, which will also install other
 
 5. Parsec will now install a bunch of stuff, including DirectX 11, Chrome, Parsec an d 7zip. When Parsec is installed, you'll see the Parsec client - go ahead and login. The login won't work at first, but you'll receive an e-mail asking you to confirm your location. Click on **Approve your new location** once you get the email, then login to Parsec on your gaming server.
 
-6. Eventually you'll see a pop-up for Razer Synapse - asking you to login. According to Parsec you don't need to login here, but I was never able to get it to work without doing that. So just login with a Razer account. You'll soon see the Razer Surround sound app opened. Go ahead and close it. 
+6. Eventually you'll see a pop-up for Razer Synapse - asking you to login. According to Parsec you don't need to login here, but I was never able to get it to work without doing that on Windows Server 2016. So just login with a Razer account. You'll soon see the Razer Surround sound app opened. Go ahead and close it. **Note: You don't need to login on Windows Server 2019**. 
 
 ![Parsec cloud prep tool 3](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps3.png)
 
-7. Now what's supposed to happen at this stage is that the Parsec script carries on, but in my experience, it doesn't. The only way I could get it to work is to right-click on the Razer Synapse software in the notification area in the Windows taskbar, and choose **Close Razer Synapse**. 
+7. Now what's supposed to happen at this stage is that the Parsec script carries on - and on Windows Server 2019 that's what will happen. However, in my experience, this doesn't work on Windows Server 2016. The only way I could get it to work is to right-click on the Razer Synapse software in the notification area in the Windows taskbar, and choose **Close Razer Synapse**. 
 
 ![Parsec cloud prep tool 4](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps4.png)
 
@@ -130,7 +130,6 @@ We'll now install Parsec via their awesome script, which will also install other
 - Host Settings
   - If you're on macOS, change **Resolution** to match the resolution of your personal system. You can find this out by clicking **Apple > About this Mac > Displays**. If you don't do this, connecting via Parsec will fail to change the resolution of the server to match your system. Windows/Linux users don't need to do this.
   - Increase the **Bandwidth Limit** to **50 Mbps**.
-  - Set **H.265 (HEVC)** to **On**.
 - Client Settings - not really required, but ¯\_(ツ)_/¯
   - Change **Resolution** to match your setting from above.
   - Set **H.265 (HEVC)** to **On**.
@@ -149,7 +148,7 @@ We'll now install Parsec via their awesome script, which will also install other
 
 ## Creating the Automation Script
 
-This section is optional - however it might be soemthing you look into. This basically configures the following:
+This section is optional - however it might be something you look into. This basically configures the following:
 
 - When you're done gaming, you just shutdown the server.
 - The script is called automatically when the server is terminated. It:
@@ -182,7 +181,7 @@ GAMING_INSTANCE_SIZE_GB = 512  # Replace this with the size of your disk
 
 ![Function timeout](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/functiontimeout.png)
 
-6. Click **Save** (top-right) to save the function. Next, we need to give our function permission to manage our EC2 resources. To do this, click on **Permissions** from the top, and click on the role that AWS automatically created for your function.
+6. Click **Deploy** (top-right) to save the function. Next, we need to give our function permission to manage our EC2 resources. To do this, click on **Permissions** from the top, and click on the role that AWS automatically created for your function.
 
 ![Function role](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/functionrole.png)
 
@@ -226,7 +225,7 @@ This section is also optional. Here we create a script that will automatically l
 - **Delete on termination:** No
 - **Encrypted:** No
 
-4. Under **Instance tags**, click **Add Tag** and create a tag with the Key set to **Name** and the Value set to the name of your gaming server (**GamingRig** in my case). Make sure that both **Tag instances** and **Tag volumes** are on. Now click **Add Tag** again, and create a tag with the Key set to **SnapAndDelete** and the Value set to **True** - again making sure that both **Tag instances** and **Tag volumes** are enabled. Note that tag keys and values are CASE SENSITIVE.
+4. Under **Resource tags**, click **Add Tag** and create a tag with the Key set to **Name** and the Value set to the name of your gaming server (**GamingRig** in my case). Make sure that both **Instances** and **Volumes** are selected under **Resource Types**. Now click **Add Tag** again, and create a tag with the Key set to **SnapAndDelete** and the Value set to **True** - again making sure that both **Tag instances** and **Tag volumes** are enabled. Note that tag keys and values are CASE SENSITIVE.
 
 ![Launch tags](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/launchtags.png)
 
