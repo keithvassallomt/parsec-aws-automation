@@ -95,7 +95,8 @@ def lambda_handler(object, context):
             RootDeviceName='/dev/sda1', 
             DryRun=False, 
             VirtualizationType='hvm', 
-            SriovNetSupport='simple'
+            EnaSupport=True #Supported instance types: current generation instance type, other than C4, D2, M4 instances smaller than m4.16xlarge, or T2. https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html
+            #SriovNetSupport='simple' Supported instance types: C3, C4, D2, I2, M4 (excluding m4.16xlarge), and R3. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sriov-networking.html
         )
         print('Created image {}'.format(ami['ImageId']))
         amis_created.append(ami['ImageId'])
