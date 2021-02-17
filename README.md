@@ -33,8 +33,8 @@ We'll begin by following the Parsec AWS guide.
 
 1. If you haven't already, create a [Parsec Account](https://parsecgaming.com/signup/) and download the [Parsec Client](https://parsecgaming.com/downloads)
 2. If you haven't already, create an [AWS Account]().
-3. Optionally (but recommended), create a [Razer Account](https://aws.amazon.com/registration-confirmation/).
-4. Download Microsoft Remote Desktop Client [for Windows](https://www.microsoft.com/en-us/p/microsoft-remote-desktop/9wzdncrfj3ps?activetab=pivot:overviewtab) or [for macOS](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)
+3. Optionally, create a [Razer Account](https://aws.amazon.com/registration-confirmation/).
+4. Download Microsoft Remote Desktop Client [for Windows](https://www.microsoft.com/en-us/p/microsoft-remote-desktop/9wzdncrfj3ps?activetab=pivot:overviewtab) or [for macOS](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac) or something like [Remmina](https://flathub.org/apps/details/org.remmina.Remmina) for Linux.
 4. Login to the [AWS Console](https://console.aws.amazon.com) using your root account.
 5. Go to **Services > EC2**.
 6. Click on **Running Instances**.
@@ -45,9 +45,9 @@ We'll begin by following the Parsec AWS guide.
 
 ![Region selection](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/region.png)
 
-8. Click **Launch Instance**. You will want to select either **Windows Server 2016 Base** or **Windows Server 2019 Base**. I chose the 2016 option, in this guide, but used 2019 in following instances since it supports more modern games - so best to choose **Windows Server 2019 Base**.
+8. Click **Launch Instance**. Select **Windows Server 2019 Base**. 
 
-![2016 Base](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/2016Base.png)
+![2016 Base](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/2019Base.png)
 
 9. From the next screen, choose the **g4dn.xlarge** instance type. 
 
@@ -59,7 +59,7 @@ We'll begin by following the Parsec AWS guide.
 
 ![Adding storage](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/storage.png)
 
-12. Move on to **Next: Add Tags**. This is **Very Important** so don't skip it. You'll want to create a tag called **Name** - with a capital **N**. For the value, choose a name for your gaming server. In this guide I'm just calling it **GamingRig**, but feel free to get creative here. Also make sure that the checkboxes for both **Instances** and **Volumes** are checked.
+12. Move on to **Next: Add Tags**. This is **Very Important** so don't skip it. You'll want to create a tag called **Name** - with a capital **N**. For the value, choose a name for your gaming server. Make sure that the checkboxes for both **Instances** and **Volumes** are checked.
 
 ![Tagging the instance](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/tagginginstance.png)
 
@@ -79,7 +79,7 @@ We'll begin by following the Parsec AWS guide.
 
 ![Instance started](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/instance_started.png)
 
-18. Now we'll connect to the instance. With your instance selected, click **Connect**, then switch to the **RDP client** tab, click **Download Remote Desktop File** and add it to **That Folder**. Next, click **Get Password**. If you get a warning about the password not being available yet, click **Try again** until it is. Browse to the location of your key file (it should be in **That Folder**). This will display the key contents in the window.
+18. Now we'll connect to the instance. With your instance selected, click **Connect**, then switch to the **RDP client** tab, click **Download Remote Desktop File** and add it to **That Folder**. Next, click **Get Password**. If you get a warning about the password not being available yet, close the window and clikc **Connect** again after a few minutes. Browse to the location of your key file (it should be in **That Folder**). This will display the key contents in the window.
 
 ![Decrypted password](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/decrypted.png)
 
@@ -103,15 +103,15 @@ We'll now install Parsec via their awesome script, which will also install other
 
 ![Parsec cloud prep tool 2](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps2.png)
 
-5. Parsec will now install a bunch of stuff, including DirectX 11, Chrome, Parsec an d 7zip. When Parsec is installed, you'll see the Parsec client - go ahead and login. The login won't work at first, but you'll receive an e-mail asking you to confirm your location. Click on **Approve your new location** once you get the email, then login to Parsec on your gaming server.
+5. The script will now install a bunch of stuff, including DirectX 11, Chrome, Parsec and 7zip. Depending on the script version, AWS, Microsoft and the alignment of the moon, you may sometimes get errors from the script. These will probably show that one or more downloads failed, typically for Direct X and the XBox Game controller driver. If you do get this error, you can download Direct X from [here](https://community.pcgamingwiki.com/files/file/2106-legacy-directx-sdk-redist-directx_jun2010_redistexe/) and the XBox contoller driver from [here](https://www.techspot.com/drivers/driver/file/information/11300/).
 
-6. Eventually you'll see a pop-up for Razer Synapse - asking you to login. According to Parsec you don't need to login here, but I was never able to get it to work without doing that on Windows Server 2016. So just login with a Razer account. You'll soon see the Razer Surround sound app opened. Go ahead and close it. **Note: You don't need to login on Windows Server 2019**. 
+![Script errors](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/pserror.png)
+
+6. When Parsec is installed, you'll see the Parsec client - go ahead and login. The login won't work at first, but you'll receive an e-mail asking you to confirm your location. Click on **Approve your new location** once you get the email, then login to Parsec on your gaming server.
+
+7. Eventually you'll see a pop-up for Razer Synapse - asking you to login. You don't need to login - we just need this installed. Go ahead and close it. **Note: On Windows Server 2016 you may need to login and/or close the app for the script to continue.**. 
 
 ![Parsec cloud prep tool 3](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps3.png)
-
-7. Now what's supposed to happen at this stage is that the Parsec script carries on - and on Windows Server 2019 that's what will happen. However, in my experience, this doesn't work on Windows Server 2016. The only way I could get it to work is to right-click on the Razer Synapse software in the notification area in the Windows taskbar, and choose **Close Razer Synapse**. 
-
-![Parsec cloud prep tool 4](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps4.png)
 
 8. The Parsec script will now continue with the GPU updater tool. You'll be prompted to provide an Access Key and Secret. To do this, copy the link that is shown in the prompt, and paste it in your browser, or just [click here](https://console.aws.amazon.com/iam/home?/security_credentials#/security_credentials). 
 
@@ -121,15 +121,16 @@ We'll now install Parsec via their awesome script, which will also install other
 
 ![Parsec cloud prep tool 6](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps6.png)
 
-10. When the driver is installed, you'll be advised that you don't need a reboot - but in my experience, you do. So, when asked to reboot, press **y** to reboot the system.
+10. When the driver is installed, you'll be advised whether or not you need to reboot.
 
-11. Use the steps outlined in step 1 to re-connect to your system via RDP.
+11. If you rebooted, use the steps outlined in step 1 to re-connect to your system via RDP.
 
 12. At this point you should configure Parsec (double-click the Parsec icon on your desktop). I used the following settings:
 
 - Host Settings
   - If you're on macOS, change **Resolution** to match the resolution of your personal system. You can find this out by clicking **Apple > About this Mac > Displays**. If you don't do this, connecting via Parsec will fail to change the resolution of the server to match your system. Windows/Linux users don't need to do this.
   - Increase the **Bandwidth Limit** to **50 Mbps**.
+  - Give the host an easy to remember name.
 - Client Settings - not really required, but ¯\_(ツ)_/¯
   - Change **Resolution** to match your setting from above.
   - Set **H.265 (HEVC)** to **On**.
@@ -142,9 +143,7 @@ We'll now install Parsec via their awesome script, which will also install other
 
 15. Optionally, doublick-click on the **Setup One Hour Warning** icon on your desktop. This will warn you when you have been connected for an hour, so you can better manage your billing.
 
-16. Now, disconnect from your server (i.e. close the RDP window), and connect to the server via Parsec instead. You're now ready to game! I installed Steam and Doom Eternal to give it a shot.
-
-![Killing a hell priest](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/doom.png)
+16. Now, disconnect from your server (i.e. close the RDP window), and connect to the server via Parsec instead. You're now ready to game! If you're not interested in the automation stuff, you can now skip to the [Gaming](#gaming) section. 
 
 ## Creating the Automation Script
 
@@ -159,7 +158,7 @@ This section is optional - however it might be something you look into. This bas
   
 The reason we do this is because keeping a snapshot is cheaper than keeping a volume. We also have an AMI so we can easily re-launch the instance later and continue where we left off. I've also created a script to do this automatically, which is described in the next section.
 
-1. From the AWS console, go to **Services > Lambda**. 
+1. Shutdown your rig (**Start > Shutdown**) then from the AWS console, go to **Services > Lambda**. 
 
 2. Click **Create Function** and give it a name. In my case I called it **SnapAndDelete** - but any name will do. For the **Runtime**, choose **Python 3.8**. Then click **Create Function**.
 
@@ -177,11 +176,11 @@ GAMING_INSTANCE_REGION = 'eu-west-3' # Replace this with the region your server 
 GAMING_INSTANCE_SIZE_GB = 512  # Replace this with the size of your disk
 ```
 
-5. The function will typically only run for a few seconds, however there is an exception. Snapshots in AWS are built incrementally, which is why they're so fast - except the first time we create a snapshot there's nothing to base on, so the entire 512GB volume needs to be snapshotted, which takes a while. So, we'll increase our function execution time limit. Scroll down to **Basic Settings** and click **Edit**, then set the **Timeout** to 15 minutes. Click **Save** when you're done. 
+5. The function will typically only run for a few seconds, however there is an exception. Snapshots in AWS are built incrementally, which is why they're so fast - except the first time we create a snapshot there's nothing to base on, so the entire 512GB volume needs to be snapshotted, which takes a while. It will also take a while to take a snapshot after installing a large game. So, we'll increase our function execution time limit. Scroll down to **Basic Settings** and click **Edit**, then set the **Timeout** to 15 minutes. Click **Save** when you're done. 
 
 ![Function timeout](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/functiontimeout.png)
 
-6. Click **Deploy** (top-right) to save the function. Next, we need to give our function permission to manage our EC2 resources. To do this, click on **Permissions** from the top, and click on the role that AWS automatically created for your function.
+6. Click **Deploy** to save the function. Next, we need to give our function permission to manage our EC2 resources. To do this, click on **Permissions** from the top, and click on the role that AWS automatically created for your function.
 
 ![Function role](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/functionrole.png)
 
@@ -189,19 +188,26 @@ GAMING_INSTANCE_SIZE_GB = 512  # Replace this with the size of your disk
 
 ![EC2 full access](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ec2access.png)
 
-8. Next, we need to tell AWS to run this function every time our instance is terminated. Go to **Services > CloudWatch**, then click **Events > Get Started**. Fill in the form as follows:
+8. At this point, you should **really** test that the function works. From the EC2 console, Terminate the instance (**Instance State > Terminate**). Then, back in Lambda, click **Test > Create Test Event** and give the event a name. Then click **Test** to see whether the function works. If it does, you should see output similar to the following (note that this will take a while):
 
+![Lambda test success](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/testsuccess.png)
+
+9. Next, we need to tell AWS to run this function every time our instance is terminated. Go to **Services > Amazon EventBridge**, then click **Create rule**. Fill in the form as follows:
+
+- **Name:** Any name.
+- **Description:** Any description.
+- **Define Pattern:** Event Pattern.
+- **Event matching pattern:** Pre-defined pattern by service.
+- **Service provider:** AWS.
 - **Service Name:** EC2.
 - **Event Type:** EC2 Instance State-change Notification.
 - **Specific state(s):** Checked, and choose **terminated** from the list of states.
 
-9. Now click **Add target**, and from the **Function** drop-down, choose the Lambda function we created earlier. Note that the function checks instance tags when doing its thing, so it won't mess around with your other instances/volumes/snapshots/AMIs.
+9. Now from **Select targets**, and from the **Function** drop-down, choose the Lambda function we created earlier. Note that the function checks instance tags when doing its thing, so it won't mess around with your other instances/volumes/snapshots/AMIs.
 
 ![Event configuration](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/event1.png)
 
-10. Now click **Configure details**. Give your rule a name, and click **Create rule**.
-
-11. At this point, shutdown your gaming rig, then from the EC2 console choose **Actions > Terminate**. This will terminate the instance and the Lamda function should kick in, which will create the initial snapshot of the machine. You can monitor it from the **Snapshots** section of the EC2 console. Note that this initial snapshot will take a while to complete, but following this snapshots shouldn't take that long - it depends on how many changes you've made to the machine whilst using it. 
+10. At this point, shutdown your gaming rig, then from the EC2 console choose **Actions > Terminate**. This will terminate the instance and the Lamda function should kick in, which will create the initial snapshot of the machine. You can monitor it from the **Snapshots** section of the EC2 console. Note that this initial snapshot will take a while to complete, but following this snapshots shouldn't take that long - it depends on how many changes you've made to the machine whilst using it. 
 
 ## Creating the Start Script
 
@@ -232,7 +238,7 @@ This section is also optional. Here we create a script that will automatically l
 5. Expand **Advanced details**, then:
 
 - **Request Spot Instances:** Checked.
-- Click **Customize** then click **Set your maximum price (per instance/hour)** and set your price to some value greater than the instance average. For example, the average in eu-west-3 is $0.37, so I set it to $0.40.
+- Click **Customize** then click **Set your maximum price (per instance/hour)** and set your price to some value greater than the instance average. You can see current average prices [here](https://aws.amazon.com/ec2/spot/pricing/) - make sure you choose your region. For example, the average in eu-west-3 is $0.37, so I set it to $0.40.
 - **Shutdown behavior:** Terminate. 
 - **Termination protection:** Disable.
 - **Detailed CloudWatch monitoring:** Disable.
@@ -318,3 +324,8 @@ We're done! We can now take our server out for a spin, which will also let me ex
 8. In the **Images** section, you'll see the brand new AMI, ready for your next gaming session.
 
 ![Tutorial 8](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/tutorial8.png)
+
+## Gaming
+I installed Steam and Doom Eternal to gave it a shot.
+
+![Killing a hell priest](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/doom.png)
