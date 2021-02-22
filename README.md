@@ -4,7 +4,7 @@ Parsec AWS Automation Scripts & Guide
 | Info        | Value           |
 | ------------- |:-------------|
 | Created by      | Keith Vassallo |
-| Acknowledgements      | [/u/rom-ok](https://www.reddit.com/user/rom-ok)<br>[/u/dolanders](https://www.reddit.com/user/dolanders)<br>[@Cookie-Monster-Coder](https://github.com/Cookie-Monster-Coder)<br>[@rhigueras](https://github.com/rhigueras)<br>The [Parsec Team](https://parsecgaming.com/)      |
+| Acknowledgements      | [/u/rom-ok](https://www.reddit.com/user/rom-ok)<br>[/u/dolanders](https://www.reddit.com/user/dolanders)<br>[@Cookie-Monster-Coder](https://github.com/Cookie-Monster-Coder)<br>[@rhigueras](https://github.com/rhigueras)<br>[@srichter](https://github.com/srichter)<br>The [Parsec Team](https://parsecgaming.com/)      |
 | Related Reading      | [Parsec AWS Guide](https://blog.parsecgaming.com/rtx-cloud-gaming-with-the-new-aws-g4-instances-11d1c60c2d09) |
 
 Check out a video version of this guide at: https://www.youtube.com/watch?v=H3vP6hD3fRo
