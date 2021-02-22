@@ -19,6 +19,8 @@ def lambda_handler(object, context):
     # Get all volumes for the given instance    
     volumes_to_delete = []
     for volume in volumes:
+        if 'Tags' not in volume:
+            continue
         for tag in volume['Tags']:
             if tag['Key'] == 'Name' and tag['Value'] == GAMING_INSTANCE_NAME:
                 volumes_to_delete.append(volume)
