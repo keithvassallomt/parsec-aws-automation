@@ -31,7 +31,7 @@ def lambda_handler(object, context):
                 
     # Create a snapshot of the volumes
     snaps_created = []
-    for volume in volumes:
+    for volume in volumes_to_delete:
         snap = ec2.create_snapshot(VolumeId=volume['VolumeId'])
         snap_id = snap['SnapshotId']
         snap_waiter = ec2.get_waiter('snapshot_completed')
