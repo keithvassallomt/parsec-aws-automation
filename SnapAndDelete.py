@@ -19,6 +19,8 @@ def lambda_handler(object, context):
     # Get all volumes for the given instance    
     volumes_to_delete = []
     for volume in volumes:
+        if 'Tags' not in volume:
+            continue
         for tag in volume['Tags']:
             if tag['Key'] == 'Name' and tag['Value'] == GAMING_INSTANCE_NAME:
                 volumes_to_delete.append(volume)
@@ -29,7 +31,7 @@ def lambda_handler(object, context):
                 
     # Create a snapshot of the volumes
     snaps_created = []
-    for volume in volumes:
+    for volume in volumes_to_delete:
         snap = ec2.create_snapshot(VolumeId=volume['VolumeId'])
         snap_id = snap['SnapshotId']
         snap_waiter = ec2.get_waiter('snapshot_completed')
