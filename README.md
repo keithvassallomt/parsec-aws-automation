@@ -79,7 +79,7 @@ We'll begin by following the Parsec AWS guide.
 
 ![Instance started](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/instance_started.png)
 
-18. Now we'll connect to the instance. With your instance selected, click **Connect**, then switch to the **RDP client** tab, click **Download Remote Desktop File** and add it to **That Folder**. Next, click **Get Password**. If you get a warning about the password not being available yet, close the window and clikc **Connect** again after a few minutes. Browse to the location of your key file (it should be in **That Folder**). This will display the key contents in the window.
+18. Now we'll connect to the instance. With your instance selected, click **Connect**, then switch to the **RDP client** tab, click **Download Remote Desktop File** and add it to **That Folder**. Next, click **Get Password**. If you get a warning about the password not being available yet, close the window and click **Connect** again after a few minutes. Browse to the location of your key file (it should be in **That Folder**). This will display the key contents in the window.
 
 ![Decrypted password](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/decrypted.png)
 
