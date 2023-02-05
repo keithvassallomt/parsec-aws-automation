@@ -121,6 +121,8 @@ We'll now install Parsec via their awesome script, which will also install other
 
 ![Parsec cloud prep tool 6](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps6.png)
 
+- If this step fails, you may need to apply fix for GPUUpdaterTool.ps1 as suggested [here](https://github.com/parsec-cloud/Parsec-Cloud-Preparation-Tool/issues/93#issuecomment-1135741304)
+
 10. When the driver is installed, you'll be advised whether or not you need to reboot.
 
 11. If you rebooted, use the steps outlined in step 1 to re-connect to your system via RDP.
