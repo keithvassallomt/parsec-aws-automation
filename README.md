@@ -99,7 +99,8 @@ We'll now install Parsec via their awesome script, which will also install other
 
 ![Parsec cloud prep tool 1](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps1.png)
 
-4. You will be asked whether to configure automatic Windows login. Type **Y** to accept this. You will be asked for your username and password, which you placed earlier in **That Folder**. 
+4. You will be asked whether to configure automatic Windows login. Type **Y** to accept this. You will be asked for your username and password, which you placed earlier in **That Folder**.
+   4.1. If this dialog did not work, you can turn on automatic logon in Windows by following instruction from this [page](https://learn.microsoft.com/en-us/troubleshoot/windows-server/user-profiles-and-logon/turn-on-automatic-logon)
 
 ![Parsec cloud prep tool 2](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps2.png)
 
@@ -144,13 +145,11 @@ We'll now install Parsec via their awesome script, which will also install other
 
 ![Parsec server found](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/serverok.png)
 
-14. Turn on automatic logon in Windows by following instruction from this [page](https://learn.microsoft.com/en-us/troubleshoot/windows-server/user-profiles-and-logon/turn-on-automatic-logon) 
+14. Optionally, double-click on the **Setup Auto Shutdown** icon on your desktop. This will shutdown your system after a number of minutes if its idle, just in case you forget to do it yourself. When prompted, I set it to 45 minutes. 
 
-15. Optionally, double-click on the **Setup Auto Shutdown** icon on your desktop. This will shutdown your system after a number of minutes if its idle, just in case you forget to do it yourself. When prompted, I set it to 45 minutes. 
+15. Optionally, doublick-click on the **Setup One Hour Warning** icon on your desktop. This will warn you when you have been connected for an hour, so you can better manage your billing.
 
-16. Optionally, doublick-click on the **Setup One Hour Warning** icon on your desktop. This will warn you when you have been connected for an hour, so you can better manage your billing.
-
-17. Now, disconnect from your server (i.e. close the RDP window), and connect to the server via Parsec instead. You're now ready to game! If you're not interested in the automation stuff, you can now skip to the [Gaming](#gaming) section. 
+16. Now, disconnect from your server (i.e. close the RDP window), and connect to the server via Parsec instead. You're now ready to game! If you're not interested in the automation stuff, you can now skip to the [Gaming](#gaming) section. 
 
 ## Creating the Automation Script
 
