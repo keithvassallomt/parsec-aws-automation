@@ -99,11 +99,15 @@ We'll now install Parsec via their awesome script, which will also install other
 
 ![Parsec cloud prep tool 1](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps1.png)
 
-4. You will be asked whether to configure automatic Windows login. Type **Y** to accept this. You will be asked for your username and password, which you placed earlier in **That Folder**. 
+4. You will be asked whether to configure automatic Windows login. Type **Y** to accept this. You will be asked for your username and password, which you placed earlier in **That Folder**.
+   4.1. If this dialog did not work, you can turn on automatic logon in Windows by following instruction from this [page](https://learn.microsoft.com/en-us/troubleshoot/windows-server/user-profiles-and-logon/turn-on-automatic-logon)
 
 ![Parsec cloud prep tool 2](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/ps2.png)
 
 5. The script will now install a bunch of stuff, including DirectX 11, Chrome, Parsec and 7zip. Depending on the script version, AWS, Microsoft and the alignment of the moon, you may sometimes get errors from the script. These will probably show that one or more downloads failed, typically for Direct X and the XBox Game controller driver. If you do get this error, you can download Direct X from [here](https://community.pcgamingwiki.com/files/file/2106-legacy-directx-sdk-redist-directx_jun2010_redistexe/) and the XBox contoller driver from [here](https://www.techspot.com/drivers/driver/file/information/11300/).
+
+    5.1 If gamepad still doesn't work you may need to install driver manually by following [this instructions]
+(https://github.com/ViGEm/ViGEmBus/issues/153).
 
 ![Script errors](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/pserror.png)
 
