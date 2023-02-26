@@ -105,6 +105,9 @@ We'll now install Parsec via their awesome script, which will also install other
 
 5. The script will now install a bunch of stuff, including DirectX 11, Chrome, Parsec and 7zip. Depending on the script version, AWS, Microsoft and the alignment of the moon, you may sometimes get errors from the script. These will probably show that one or more downloads failed, typically for Direct X and the XBox Game controller driver. If you do get this error, you can download Direct X from [here](https://community.pcgamingwiki.com/files/file/2106-legacy-directx-sdk-redist-directx_jun2010_redistexe/) and the XBox contoller driver from [here](https://www.techspot.com/drivers/driver/file/information/11300/).
 
+    5.1 If gamepad still doesn't work you may need to install driver manually by following [this instructions]
+(https://github.com/ViGEm/ViGEmBus/issues/153).
+
 ![Script errors](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/pserror.png)
 
 6. When Parsec is installed, you'll see the Parsec client - go ahead and login. The login won't work at first, but you'll receive an e-mail asking you to confirm your location. Click on **Approve your new location** once you get the email, then login to Parsec on your gaming server.
@@ -141,11 +144,13 @@ We'll now install Parsec via their awesome script, which will also install other
 
 ![Parsec server found](https://github.com/keithvassallomt/parsec-aws-automation/raw/master/images/serverok.png)
 
-14. Optionally, double-click on the **Setup Auto Shutdown** icon on your desktop. This will shutdown your system after a number of minutes if its idle, just in case you forget to do it yourself. When prompted, I set it to 45 minutes. 
+14. Turn on automatic logon in Windows by following instruction from this [page](https://learn.microsoft.com/en-us/troubleshoot/windows-server/user-profiles-and-logon/turn-on-automatic-logon) 
 
-15. Optionally, doublick-click on the **Setup One Hour Warning** icon on your desktop. This will warn you when you have been connected for an hour, so you can better manage your billing.
+15. Optionally, double-click on the **Setup Auto Shutdown** icon on your desktop. This will shutdown your system after a number of minutes if its idle, just in case you forget to do it yourself. When prompted, I set it to 45 minutes. 
 
-16. Now, disconnect from your server (i.e. close the RDP window), and connect to the server via Parsec instead. You're now ready to game! If you're not interested in the automation stuff, you can now skip to the [Gaming](#gaming) section. 
+16. Optionally, doublick-click on the **Setup One Hour Warning** icon on your desktop. This will warn you when you have been connected for an hour, so you can better manage your billing.
+
+17. Now, disconnect from your server (i.e. close the RDP window), and connect to the server via Parsec instead. You're now ready to game! If you're not interested in the automation stuff, you can now skip to the [Gaming](#gaming) section. 
 
 ## Creating the Automation Script
 
